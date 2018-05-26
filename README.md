@@ -9,17 +9,17 @@
 ## Install
 
 ```sh
-npm install react-native-select-multiple
+npm install https://github.com/xianghui/react-native-select-multiple
 ```
 
 ## Usage
 
 ```js
-import React, { Component } from 'react'
-import { View } from 'react-native'
-import SelectMultiple from 'react-native-select-multiple'
+import React, { Component } from "react";
+import { View } from "react-native";
+import SelectMultiple from "react-native-select-multiple";
 
-const fruits = ['Apples', 'Oranges', 'Pears']
+const fruits = ["Apples", "Oranges", "Pears"];
 // --- OR ---
 // const fruits = [
 //   { label: 'Apples', value: 'appls' },
@@ -28,22 +28,23 @@ const fruits = ['Apples', 'Oranges', 'Pears']
 // ]
 
 class App extends Component {
-  state = { selectedFruits: [] }
+  state = { selectedFruits: [] };
 
-  onSelectionsChange = (selectedFruits) => {
+  onSelectionsChange = selectedFruits => {
     // selectedFruits is array of { label, value }
-    this.setState({ selectedFruits })
-  }
+    this.setState({ selectedFruits });
+  };
 
-  render () {
+  render() {
     return (
       <View>
         <SelectMultiple
           items={fruits}
           selectedItems={this.state.selectedFruits}
-          onSelectionsChange={this.onSelectionsChange} />
+          onSelectionsChange={this.onSelectionsChange}
+        />
       </View>
-    )
+    );
   }
 }
 ```
@@ -51,11 +52,11 @@ class App extends Component {
 ## Customize label
 
 ```js
-import React, { Component } from 'react'
-import { View, Text, Image } from 'react-native'
-import SelectMultiple from 'react-native-select-multiple'
+import React, { Component } from "react";
+import { View, Text, Image } from "react-native";
+import SelectMultiple from "react-native-select-multiple";
 
-const fruits = ['Apples', 'Oranges', 'Pears']
+const fruits = ["Apples", "Oranges", "Pears"];
 // --- OR ---
 // const fruits = [
 //   { label: 'Apples', value: 'appls' },
@@ -65,55 +66,61 @@ const fruits = ['Apples', 'Oranges', 'Pears']
 
 const renderLabel = (label, style) => {
   return (
-    <View style={{flexDirection: 'row', alignItems: 'center'}}>
-      <Image style={{width: 42, height: 42}} source={{uri: 'https://dummyimage.com/100x100/52c25a/fff&text=S'}} />
-      <View style={{marginLeft: 10}}>
+    <View style={{ flexDirection: "row", alignItems: "center" }}>
+      <Image
+        style={{ width: 42, height: 42 }}
+        source={{ uri: "https://dummyimage.com/100x100/52c25a/fff&text=S" }}
+      />
+      <View style={{ marginLeft: 10 }}>
         <Text style={style}>{label}</Text>
       </View>
     </View>
-  )
-}
+  );
+};
 
 class App extends Component {
-  state = { selectedFruits: [] }
+  state = { selectedFruits: [] };
 
-  onSelectionsChange = (selectedFruits) => {
+  onSelectionsChange = selectedFruits => {
     // selectedFruits is array of { label, value }
-    this.setState({ selectedFruits })
-  }
+    this.setState({ selectedFruits });
+  };
 
-  render () {
+  render() {
     return (
       <View>
         <SelectMultiple
           items={fruits}
           renderLabel={renderLabel}
           selectedItems={this.state.selectedFruits}
-          onSelectionsChange={this.onSelectionsChange} />
+          onSelectionsChange={this.onSelectionsChange}
+        />
       </View>
-    )
+    );
   }
 }
 ```
 
 ## Properties
 
-| Prop  | Default  | Type | Description |
-| :------------ |:---------------:| :---------------:| :-----|
-| items | - | `array` | All items available in the list (array of `string` or `{ label, value }`) |
-| selectedItems | `[]` | `array` | The currently selected items (array of `string` or `{ label, value }`) |
-| onSelectionsChange | - | `func` | Callback called when a user selects or de-selects an item, passed `(selections, item)` |
-| checkboxSource | [image](images/icon-checkbox.png) | `object` | [Image source](https://facebook.github.io/react-native/docs/image.html#source) for the checkbox (unchecked). |
-| selectedCheckboxSource | [image](images/icon-checkbox-checked.png) | `object` | [Image source](https://facebook.github.io/react-native/docs/image.html#source) for the checkbox (checked). |
-| listViewProps | {} | `object` | Additional props for the list view |
-| style | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/scrollview.html#style) for the `ListView` container. |
-| rowStyle | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/view.html#style) for the row container. |
-| checkboxStyle | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/image.html#style) for the checkbox image. |
-| labelStyle | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/text.html#style) for the text label. |
-| selectedRowStyle | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/view.html#style) for the row container when selected. |
-| selectedCheckboxStyle | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/image.html#style) for the checkbox image when selected. |
-| selectedLabelStyle | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/text.html#style) for the text label when selected. |
-| renderLabel | null | `func` | Function for render label. |
+| Prop                   |                    Default                     |   Type   | Description                                                                                                  |
+| :--------------------- | :--------------------------------------------: | :------: | :----------------------------------------------------------------------------------------------------------- |
+| items                  |                       -                        | `array`  | All items available in the list (array of `string` or `{ label, value }`)                                    |
+| selectedItems          |                      `[]`                      | `array`  | The currently selected items (array of `string` or `{ label, value }`)                                       |
+| onSelectionsChange     |                       -                        |  `func`  | Callback called when a user selects or de-selects an item, passed `(selections, item)`                       |
+| checkboxSource         |       [image](images/icon-checkbox.png)        | `object` | [Image source](https://facebook.github.io/react-native/docs/image.html#source) for the checkbox (unchecked). |
+| selectedCheckboxSource |   [image](images/icon-checkbox-checked.png)    | `object` | [Image source](https://facebook.github.io/react-native/docs/image.html#source) for the checkbox (checked).   |
+| listViewProps          |                       {}                       | `object` | Additional props for the list view                                                                           |
+| style                  | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/scrollview.html#style) for the `ListView` container.    |
+| rowStyle               | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/view.html#style) for the row container.                 |
+| checkboxStyle          | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/image.html#style) for the checkbox image.               |
+| labelStyle             | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/text.html#style) for the text label.                    |
+| selectedRowStyle       | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/view.html#style) for the row container when selected.   |
+| selectedCheckboxStyle  | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/image.html#style) for the checkbox image when selected. |
+| selectedLabelStyle     | [default styles](src/SelectMultiple.styles.js) | `object` | [Style](https://facebook.github.io/react-native/docs/text.html#style) for the text label when selected.      |
+| renderLabel            |                      null                      |  `func`  | Function for render label.                                                                                   |
+| checkboxView           |                      null                      | 'object' | View used for the checkbox instead of using the default image                                                |
+| selectedCheckboxView   |                      null                      | 'object' | View used for the selected checkbox instead of using the default checked image                               |
 
 ## Contribute
 
@@ -123,7 +130,7 @@ Feel free to dive in! [Open an issue](https://github.com/tableflip/react-native-
 
 [ISC](LICENSE) © TABLEFLIP
 
-----
+---
 
 A [(╯°□°）╯︵TABLEFLIP](https://tableflip.io) side project.
 
